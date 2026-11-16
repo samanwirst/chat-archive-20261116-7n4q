@@ -1,0 +1,1 @@
+{"version":1,"kdf":"PBKDF2-SHA256","iterations":600000,"salt":"P0BIDwsvKhTl4rrhbPsgoBpaQ30gPCI4","catalogue":{"parts":["../chat-archive-20261116-7n4q-media-4/data/24106cc5c2cc75c584a3f93028c44403ea5a833a.bin"],"mime":"application/json","size":1372703,"sha256":"1c2aa31d73ff19ab0babe18885952d6240f965abef9310dc191dd76229e4d780","aad":"archive-catalogue-v1"}}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data:; script-src 'self' blob: 'unsafe-inline'; style-src 'self' 'unsafe-inline' blob:; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Архив переписки, защищённый паролем.">
+  <title>Архив переписки</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23229ed9'/%3E%3Cpath d='M18 27h28v24H18zm7 0v-8a7 7 0 0 1 14 0v8' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="app.css">
+  <script defer src="lottie.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main id="gate" class="gate">
+    <form id="unlockForm" class="card">
+      <div class="lock-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="12" y="21" width="24" height="20" rx="4"/><path d="M17 21v-7a7 7 0 0 1 14 0v7"/><path d="M24 29v5"/></svg></div>
+      <p class="eyebrow">ЛИЧНЫЙ АРХИВ</p>
+      <h1>Архив переписки</h1>
+      <p class="intro">Введите пароль, чтобы открыть сообщения и&nbsp;вложения.</p>
+      <label for="password">Пароль</label>
+      <input id="password" type="password" required autocomplete="current-password" placeholder="Введите пароль" autofocus>
+      <p id="gateError" class="error" role="alert"></p>
+      <button id="unlockButton" class="primary" type="submit">Открыть переписку <span aria-hidden="true">→</span></button>
+      <p class="footnote">Фото, видео и голосовые — внутри.</p>
+    </form>
+  </main>
+  <section id="viewer" hidden aria-label="Переписка">
+    <header class="toolbar">
+      <div class="brand"><span class="brand-dot"></span>Переписка</div>
+      <div class="actions">
+        <label class="sr-only" for="pageSelect">Страница переписки</label>
+        <select id="pageSelect"></select>
+        <button id="filesButton" type="button">Медиа</button>
+        <button id="lockButton" type="button">Закрыть</button>
+      </div>
+    </header>
+    <iframe id="archiveFrame" title="Сообщения переписки" referrerpolicy="no-referrer"></iframe>
+    <div id="viewerStatus" class="status" role="status" hidden></div>
+  </section>
+  <dialog id="mediaDialog" class="media-dialog">
+    <div class="dialog-bar"><span id="mediaName">Вложение</span><button id="mediaClose" type="button" aria-label="Закрыть вложение">✕</button></div>
+    <div id="mediaBody" class="media-body"></div>
+    <div class="dialog-foot"><a id="downloadOriginal" download>Скачать оригинал</a><span id="mediaInfo"></span></div>
+  </dialog>
+  <dialog id="filesDialog" class="files-dialog">
+    <div class="dialog-bar"><span>Все вложения</span><button id="filesClose" type="button" aria-label="Закрыть список вложений">✕</button></div>
+    <label class="sr-only" for="fileFilter">Тип вложения</label>
+    <select id="fileFilter"><option value="all">Все файлы</option><option value="image">Фото и стикеры</option><option value="video">Видео</option><option value="audio">Аудио</option><option value="animation">Анимированные стикеры</option></select>
+    <div id="fileList" class="file-list"></div>
+  </dialog>
+</body>
+</html>
